@@ -29,13 +29,6 @@ def potion(monster):
     else:
         print("No potions left to use!")
 
-def use_move(attacker, defender, move_name):
-def fight(enemy, monster):
-def win_fight(enemy, monster):
-def lose_fight(enemy, monster):
-def evolve_two(enemy, monster):
-def final_battle(enemy, monster):
-
 
 def evolve_one(enemy, monster):
     if monster['wins'] >= 3:
@@ -54,6 +47,15 @@ def evolve_one(enemy, monster):
             enemy['moves'][move]['power'] += 1
 
         print("Enemy has grown stronger!")
+
+
+# def use_move(attacker, defender, move_name):
+# def fight(enemy, monster):
+# def win_fight(enemy, monster):
+# def lose_fight(enemy, monster):
+# def evolve_two(enemy, monster):
+# def final_battle(enemy, monster):
+
 
 
 
