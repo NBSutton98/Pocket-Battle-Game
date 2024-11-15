@@ -73,10 +73,14 @@ def use_potion(monster):
     Heal monster
 
     A simple function that ask the user if they would like to heal their monster.
+
     :param monster: a dictionary
     :precondition: monster is a well-formed dictionary that represents a monster
-    :postcondition: return monster hp to max hp or continue without healing
+    :postcondition: apply potion function to monster or not
     :return: monster
+    >>> test_monster = {'hp': 1, 'max_hp': 10} # doctest: +SKIP
+    >>>use_potion(test_monster) # doctest: +SKIP
+    {'hp': 10, 'max_hp': 10}
     """
     while True:
         healing = input(f"Would you like to heal? Current HP:{monster['hp']} '1' yes, '2' no: ")
