@@ -463,6 +463,46 @@ def check_for_foes():
         return False
 
 
+def main():
+    intro()
+    board = make_board(5, 5)
+    monster = make_monster()
+    enemy = make_enemy()
 
+    while True and is_alive(monster):
+        describe_current_location(board, monster)
+        direction = get_user_choice()
+        valid_move = validate_move(monster, direction)
+
+        if valid_move:
+            move_monster(monster, direction)
+            there_is_a_challenger = check_for_foes()
+            if there_is_a_challenger:
+                battle(monster, enemy)
+                if monster['wins'] == 3:
+                    evolve(monster, enemy)
+        else:
+            print("You Cant Go That Way!")
+
+        if monster['wins'] == 6:
+            evolve_final(monster)
+            final_boss = make_final_boss()
+            final_battle_result = final_battle(monster, final_boss)
+            if final_battle_result:
+                print("You have completed your journey!")
+                break
+            else:
+                print("Game over! Your monster has been defeated.")
+                break
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    main()
 
 
