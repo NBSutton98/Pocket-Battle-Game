@@ -214,7 +214,30 @@ def is_alive(monster):
     return monster['hp'] > 0
 
 
+def use_move(monster, enemy, move_name):
+    """
+    Use move
 
+    This function gets the monster and enemies moves, check if they pass the accuracy check then apply the
+    power to reduce the hp of the target
+
+    :param monster: a dictionary
+    :param enemy: a dictionary
+    :param move_name: a string
+    :precondition: monster is a well-formed dictionary that represents a monster
+    :precondition: enemy is a well-formed dictionary that represents an enemy
+    :precondition: move_name must be a string referring to a key in the monster dictionary
+    :return: updated monster and enemy hp
+    """
+    move = monster['moves'].get(move_name)
+    if move and random.randint(1, 100) <= move['accuracy']:
+        damage = move['power']
+        enemy['hp'] -= damage
+        enemy['hp'] = max(0, enemy['hp'])
+        print(f"{move_name.capitalize()}!")
+        print(f"Damage dealt: {damage}. Remaining HP: {enemy['hp']}")
+    else:
+        print(f"{move_name.capitalize()}, but it missed!")
 
 def final_battle(monster, final_boss):
     """
