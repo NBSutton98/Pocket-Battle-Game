@@ -32,6 +32,16 @@ def make_enemy():
 
 
 def potion(monster):
+    """
+    Heal your monster
+
+    A function that returns your monsters hp to their max hp
+
+    :param monster: a dictonary
+    :precondition: monster is a well-formed dictionary that represents a monster
+    :postcondition: take monster hp and replace it with the value of the max_hp
+    :return: healed monster
+    """
     if monster['potion_uses'] > 0:
         monster['hp'] = monster['max_hp']
         monster['potion_uses'] -= 1
