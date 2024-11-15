@@ -92,7 +92,21 @@ def evolve(monster, enemy):
         print("Enemy has grown stronger!")
 
 
-def evolve_final(monster, enemy):
+def evolve_final(monster):
+    """
+    Evolve monster to final stage
+
+    A function that takes the monster and maxes their stats and learns the most powerful moves!
+
+    :param monster: a dictonary
+    :precondition: monster is a well-formed dictionary that represents a monster
+    :postcondition: update max hp, change move names and update power of moves
+    :return: monster
+
+    >>> test_monster = {'wins': 6, 'hp': 20, 'max_hp': 10,'moves': {'flamethrower': {'power': 10, 'accuracy': 80}, 'slash': {'power': 6, 'accuracy': 100}}, 'location_x': 0,'location_y': 0, 'potion_uses': 2}
+    >>> evolve_final(test_monster)
+    Wow! That is 6 wins for your monster! Your monster glows in a white light and begins to evolve
+    Monster has reached final evolution! Stats and move power have maxed out. They have learned ['fire blast', 'crush']    """
     if monster['wins'] >= 6:
         print(
             f'Wow! That is {monster['wins']} wins for your monster! Your monster glows in a white light and begins to evolve')
