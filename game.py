@@ -267,6 +267,15 @@ def use_move(monster, enemy, move_name):
     :precondition: enemy is a well-formed dictionary that represents an enemy
     :precondition: move_name must be a string referring to a key in the monster dictionary
     :return: updated monster and enemy hp
+
+    >>>test_monster = {'wins': 0, 'hp': 5, 'max_hp': 10,
+               'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}},
+               'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
+    >>>test_enemy = {'hp': 10, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}}}
+    >>>test_move_name = 'ember'
+    >>>use_move(monster, test_monster, test_move_name)
+    'Ember!'
+    'Damage dealt: 5. Remainging HP: 1'
     """
     move = monster['moves'].get(move_name)
     if move and random.randint(1, 100) <= move['accuracy']:
@@ -274,7 +283,7 @@ def use_move(monster, enemy, move_name):
         enemy['hp'] -= damage
         enemy['hp'] = max(0, enemy['hp'])
         print(f"{move_name.capitalize()}!")
-        print(f"Damage dealt: {damage}. Remaining HP: {enemy['hp']}")
+        print(f"Damage dealt: {damage}. Remaining Target HP: {enemy['hp']}")
     else:
         print(f"{move_name.capitalize()}, but it missed!")
 
