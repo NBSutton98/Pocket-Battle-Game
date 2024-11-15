@@ -238,16 +238,16 @@ def battle(monster, enemy):
 
 def is_alive(monster):
     """
-    Check character HP
+    Check monster HP
 
-    This function checks if character current hp is greater than 0
+    This function checks if monster current hp is greater than 0
 
     :param monster: A dictionary
-    :precondition: character must be a dictionary containing a key:value a pair of a tuple and x/y coordinates
-    :postcondition: Check if character current hp is 0
+    :precondition: monster is a well-formed dictionary that represents a monster
+    :postcondition: Check if monster current hp is 0
     :return: True or False
-    >>> character_test = {"x-coordinate": 0, "y-coordinate": 0, "hp": 5}
-    >>> is_alive(character_test)
+    >>> monster_test = {"x-coordinate": 0, "y-coordinate": 0, "hp": 5}
+    >>> is_alive(monster_test)
     True
     """
     return monster['hp'] > 0
