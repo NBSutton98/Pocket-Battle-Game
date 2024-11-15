@@ -63,7 +63,7 @@ def evolve(monster, enemy):
     :param monster: a dictonary
     :param enemy: a dictonary
     :precondition: monster is a well-formed dictionary that represents a monster
-    :precondition: enemy is a well-formed dictionary that represents a enemy
+    :precondition: enemy is a well-formed dictionary that represents an enemy
     :postcondition: update max hp, change move names and update power of moves
     :return: monster and enemy
 
@@ -121,14 +121,29 @@ def evolve_final(monster):
 
 
 def battle(monster, enemy):
+    """
+    Simulate battle
+
+    This function takes the monster and enemy dictionaries and allows user input to effect hp using moves and their power
+
+    :param monster: a dictionary
+    :param enemy: a dictionary
+    :precondition: monster is a well-formed dictionary that represents a monster
+    :precondition: enemy is a well-formed dictionary that represents an enemy
+    :postcondition: take user input to select move names, apply the power value to reduce your hp of opponent
+    :return: "Monster Wins!" or "Enemy Wins!"
+
+    >>> test_monster = {'wins': 3, 'hp': 20, 'max_hp': 5,'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}}, 'location_x': 0,'location_y': 0, 'potion_uses': 2}
+    >>> test_enemy = {'hp': 10, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}, }}
+    >>> battle(test_monster, test_enemy) # doctest: +SKIP
+    "Monster wins!"
+    """
     print("The battle begins!")
     while monster['hp'] > 0 and enemy['hp'] > 0:
         print("Monster's turn:")
         move_names = list(monster['moves'].keys())
-        print(
-            f"1. {move_names[0].capitalize()} (Power: {monster['moves'][move_names[0]]['power']}, Accuracy: {monster['moves'][move_names[0]]['accuracy']}%)")
-        print(
-            f"2. {move_names[1].capitalize()} (Power: {monster['moves'][move_names[1]]['power']}, Accuracy: {monster['moves'][move_names[1]]['accuracy']}%)")
+        print(f"1. {move_names[0].capitalize()} (Power: {monster['moves'][move_names[0]]['power']}, Accuracy: {monster['moves'][move_names[0]]['accuracy']}%)")
+        print(f"2. {move_names[1].capitalize()} (Power: {monster['moves'][move_names[1]]['power']}, Accuracy: {monster['moves'][move_names[1]]['accuracy']}%)")
         while True:
             move_choice = input("Choose a move (1 or 2): ")
             if move_choice in ["1", "2"]:
@@ -163,14 +178,28 @@ def battle(monster, enemy):
     print("Battle over!")
 
 
-def use_move(attacker, defender, move_name):
-    move = attacker['moves'].get(move_name)
+def use_move(monster, enemy, move_name):
+    """
+    Use move
+
+    This function gets the monster and enemies moves, check if they pass the accuracy check then apply the
+    power to reduce the hp of the target
+
+    :param monster: a dictionary
+    :param enemy: a dictionary
+    :param move_name: a string
+    :precondition: monster is a well-formed dictionary that represents a monster
+    :precondition: enemy is a well-formed dictionary that represents an enemy
+    :precondition: move_name must be a string referring to a key in the monster dictionary
+    :return: updated monster and enemy hp
+    """
+    move = monster['moves'].get(move_name)
     if move and random.randint(1, 100) <= move['accuracy']:
         damage = move['power']
-        defender['hp'] -= damage
-        defender['hp'] = max(0, defender['hp'])
+        enemy['hp'] -= damage
+        enemy['hp'] = max(0, enemy['hp'])
         print(f"Monster used {move_name.capitalize()}!")
-        print(f"Damage dealt: {damage}. Remaining HP: {defender['hp']}")
+        print(f"Damage dealt: {damage}. Remaining HP: {enemy['hp']}")
     else:
         print(f"Monster used {move_name.capitalize()}, but it missed!")
 
