@@ -170,6 +170,10 @@ def move_choice(monster):
     :precondition: monster is a well-formed dictionary that represents a monster
     :postcondition: get user input and access monster moves, if move exists otherwise get user input
     :return: monster move
+
+    >>>test_monster = {'wins': 0, 'hp': 5, 'max_hp': 10,'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2} # doctest: +SKIP
+    >>>move_choice(monster) # doctest: +SKIP
+    'ember'
     """
     while True:
         move_names = list(monster['moves'].keys())
