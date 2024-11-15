@@ -1,5 +1,6 @@
 import random
 
+
 def intro():
     print("welcome to this place")
     print("this is how you play")
@@ -16,8 +17,10 @@ def make_monster():
     {'wins': 0, 'hp': 2, 'max_hp': 10, 'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
     """
     monster = {'wins': 0, 'hp': 5, 'max_hp': 10,
-        'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
+               'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}},
+               'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
     return monster
+
 
 def make_final_boss():
     """
@@ -31,6 +34,7 @@ def make_final_boss():
     """
     final_boss = {'hp': 50, 'max_hp': 50, 'moves': {'Big Punch': {'power': 10, 'accuracy': 90}, }}
     return final_boss
+
 
 def make_enemy():
     """
@@ -67,6 +71,7 @@ def potion(monster):
         print(f"Potion used! Monster's HP restored to max. Potions left: {monster['potion_uses']}")
     else:
         print("No potions left to use!")
+
 
 def use_potion(monster):
     """
@@ -157,7 +162,9 @@ def evolve_final(monster):
         monster['moves']['fire blast']['power'] *= 2
         monster['moves']['crush'] = monster['moves'].pop('slash')
         monster['moves']['crush']['power'] *= 2
-        print(f"Monster has reached final evolution! Stats and move power have maxed out. They have learned {list(monster['moves'].keys())}")
+        print(
+            f"Monster has reached final evolution! Stats and move power have maxed out. They have learned {list(monster['moves'].keys())}")
+
 
 def move_choice(monster):
     """
@@ -177,14 +184,17 @@ def move_choice(monster):
     """
     while True:
         move_names = list(monster['moves'].keys())
-        print(f"1. {move_names[0].capitalize()} (Power: {monster['moves'][move_names[0]]['power']}, Accuracy: {monster['moves'][move_names[0]]['accuracy']}%)")
-        print(f"2. {move_names[1].capitalize()} (Power: {monster['moves'][move_names[1]]['power']}, Accuracy: {monster['moves'][move_names[1]]['accuracy']}%)")
+        print(
+            f"1. {move_names[0].capitalize()} (Power: {monster['moves'][move_names[0]]['power']}, Accuracy: {monster['moves'][move_names[0]]['accuracy']}%)")
+        print(
+            f"2. {move_names[1].capitalize()} (Power: {monster['moves'][move_names[1]]['power']}, Accuracy: {monster['moves'][move_names[1]]['accuracy']}%)")
         move_input = input("Choose a move (1 or 2): ")
         if move_input in ["1", "2"]:
             user_move = move_names[int(move_input) - 1]
             return user_move
         else:
             print("Invalid choice! Please enter '1' or '2'.")
+
 
 def battle(monster, enemy):
     """
@@ -224,6 +234,7 @@ def battle(monster, enemy):
             return "Enemy wins!"
 
     print("Battle over!")
+
 
 def is_alive(monster):
     """
@@ -267,6 +278,7 @@ def use_move(monster, enemy, move_name):
     else:
         print(f"{move_name.capitalize()}, but it missed!")
 
+
 def final_battle(monster, final_boss):
     """
     Engage in the final battle between the monster and the final boss.
@@ -290,7 +302,6 @@ def final_battle(monster, final_boss):
     else:
         print("Your monster has been defeated by the final boss. Better luck next time!")
         return False
-
 
 
 def make_board(rows, columns):
@@ -344,6 +355,7 @@ def make_board(rows, columns):
         for column in range(columns):
             board[(row, column)] = random.choice(room_descriptions)
     return board
+
 
 def describe_current_location(board, monster):
     """
@@ -437,7 +449,6 @@ def validate_move(monster, direction):
         return False
 
 
-
 def move_monster(monster, direction):
     """
     Move the monster
@@ -471,6 +482,7 @@ def move_monster(monster, direction):
         return False
 
     return True
+
 
 def check_for_foes():
     """
@@ -524,13 +536,5 @@ def main():
                 break
 
 
-
-
-
-
-
-
 if __name__ == "__main__":
     main()
-
-
