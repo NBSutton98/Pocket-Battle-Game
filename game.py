@@ -226,6 +226,9 @@ def final_battle(monster, final_boss):
     :precondition: final_boss is a well-formed dictionary that represents a final boss
     :postcondition: execute the final battle sequence and display a congratulatory message if the player wins
     :return: battle result
+
+    >>>final_battle(monster, final_boss) # doctest: +SKIP
+    "Congratulations! Your monster has defeated the final boss and completed its journey!"
     """
     print(f"Congrats on making it this far, your has {monster['wins']} wins! Time for your final challenge")
     result = battle(monster, final_boss)
