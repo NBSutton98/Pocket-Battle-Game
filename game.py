@@ -41,6 +41,10 @@ def potion(monster):
     :precondition: monster is a well-formed dictionary that represents a monster
     :postcondition: take monster hp and replace it with the value of the max_hp
     :return: healed monster
+
+    >>> damaged_monster = {'wins': 0, 'hp': 1, 'max_hp': 10, 'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}}, 'location_x': 0, 'location_y': 0, 'potion_uses': 2}
+    >>> potion(damaged_monster)
+    Potion used! Monster's HP restored to max. Potions left: 1
     """
     if monster['potion_uses'] > 0:
         monster['hp'] = monster['max_hp']
