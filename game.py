@@ -413,15 +413,14 @@ def validate_move(monster, direction):
 
     :param monster: A dictionary
     :param direction: A string
-    :precondition character: A dictionary that must have three key:value pairs representing x and y coordinates
-    and current HP
+    :precondition: monster is a well-formed dictionary that represents a monster    and current HP
     :precondition direction: A one letter string consisting of 'w', 's', 'd' or 'a'
-    :postcondition: Take the character's x/y coordinates and check to make sure it is within the bounds of the board
+    :postcondition: Take the monster x and y coordinates and check to make sure it is within the bounds of the board
     :return: Boolean
 
-    >>> character_test = {"x-coordinate": 0, "y-coordinate": 0, "current_hp": 5}
+    >>> monster_test = {"x-coordinate": 0, "y-coordinate": 0, "current_hp": 5}
     >>> test_direction = 's'
-    >>> validate_move(character_test, test_direction)
+    >>> validate_move(monster_test, test_direction)
     True
     """
 
