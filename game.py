@@ -68,6 +68,18 @@ def potion(monster):
     else:
         print("No potions left to use!")
 
+def use_potion(monster):
+    while True:
+        healing = input(f"Would you like to heal? Current HP:{monster['hp']} '1' yes, '2' no: ")
+        if healing in ["1", "2"]:
+            if healing == '1':
+                potion(monster)
+                return "Monster wins!"
+            elif healing == '2':
+                print("Continuing without healing.")
+                return "Monster wins!"
+        else:
+            print("Invalid choice! Please enter '1' or '2'.")
 
 
 def evolve(monster, enemy):
