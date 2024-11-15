@@ -1,5 +1,6 @@
 import random
 
+#intro
 
 def make_monster():
     """
@@ -11,11 +12,23 @@ def make_monster():
     >>> make_monster()
     {'wins': 0, 'hp': 20, 'max_hp': 5, 'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}}, 'location_x': 0, 'location_y': 0, 'potion_uses': 2}
     """
-    monster = {'wins': 0, 'hp': 20, 'max_hp': 5,
+    monster = {'wins': 0, 'hp': 10, 'max_hp': 10,
         'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}}, 'location_x': 0,
         'location_y': 0, 'potion_uses': 2}
     return monster
 
+def make_final_boss():
+    """
+    Create a final boss.
+
+    :postcondition: create a well-formed dictionary that represents the final boss.
+    :return: a monster
+
+    >>> make_final_boss()
+    {'hp': 10, 'max_hp': 50, 'moves': {'bite': {'power': 1, 'accuracy': 90}}}
+    """
+    final_boss = {'hp': 50, 'max_hp': 50, 'moves': {'Big Punch': {'power': 10, 'accuracy': 90}, }}
+    return final_boss
 
 def make_enemy():
     """
@@ -27,7 +40,7 @@ def make_enemy():
     >>> make_enemy()
     {'hp': 10, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}}}
     """
-    enemy = {'hp': 10, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}, }}
+    enemy = {'hp': 5, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}, }}
     return enemy
 
 
@@ -203,5 +216,23 @@ def use_move(monster, enemy, move_name):
     else:
         print(f"Monster used {move_name.capitalize()}, but it missed!")
 
-#final battle
-#intro
+def final_battle(monster, final_boss):
+    """
+    Engage in the final battle between the monster and the final boss.
+
+    :param monster: a dictionary representing the player's monster
+    :param final_boss: a dictionary representing the final boss monster
+    :precondition: monster is a well-formed dictionaries representing a monster
+    :precondition: final_boss is a well-formed dictionary that represents a final boss
+    :postcondition: execute the final battle sequence and display a congratulatory message if the player wins
+    :return: battle result
+    """
+    print(f"Congrats on making it this far, your has {monster['wins']} wins! Time for your final challenge")
+    result = battle(monster, final_boss)
+    if result == "Monster wins!":
+        print("Congratulations! Your monster has defeated the final boss and completed its journey!")
+    else:
+        print("Your monster has been defeated by the final boss. Better luck next time!")
+
+
+
