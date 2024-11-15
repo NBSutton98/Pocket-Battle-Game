@@ -160,6 +160,17 @@ def evolve_final(monster):
         print(f"Monster has reached final evolution! Stats and move power have maxed out. They have learned {list(monster['moves'].keys())}")
 
 def move_choice(monster):
+    """
+    Select monster move
+
+    This function accesses the monster move dictionary and prompts the user to select one of 2 the moves,
+    preventing any other input
+
+    :param monster: a dictionary
+    :precondition: monster is a well-formed dictionary that represents a monster
+    :postcondition: get user input and access monster moves, if move exists otherwise get user input
+    :return: monster move
+    """
     while True:
         move_names = list(monster['moves'].keys())
         print(f"1. {move_names[0].capitalize()} (Power: {monster['moves'][move_names[0]]['power']}, Accuracy: {monster['moves'][move_names[0]]['accuracy']}%)")
