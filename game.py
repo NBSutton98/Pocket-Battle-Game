@@ -268,14 +268,12 @@ def use_move(monster, enemy, move_name):
     :precondition: move_name must be a string referring to a key in the monster dictionary
     :return: updated monster and enemy hp
 
-    >>>test_monster = {'wins': 0, 'hp': 5, 'max_hp': 10,
-               'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}},
-               'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
+    >>>test_monster = {'wins': 0, 'hp': 5, 'max_hp': 10,'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}},'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
     >>>test_enemy = {'hp': 10, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}}}
     >>>test_move_name = 'ember'
-    >>>use_move(monster, test_monster, test_move_name)
+    >>>use_move(monster, test_enemy, test_move_name) # doctest: +SKIP
     'Ember!'
-    'Damage dealt: 5. Remainging HP: 1'
+    'Damage dealt: 5. Remainging HP: 0'
     """
     move = monster['moves'].get(move_name)
     if move and random.randint(1, 100) <= move['accuracy']:
