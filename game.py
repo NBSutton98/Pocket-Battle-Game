@@ -35,6 +35,12 @@ def evolve(monster, enemy):
     :postcondition: update max hp, change move names and update power of moves
     :return: monster and enemy
 
+    >>> test_monster = {'wins': 3, 'hp': 20, 'max_hp': 5,'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}}, 'location_x': 0,'location_y': 0, 'potion_uses': 2}
+    >>> test_enemy = {'hp': 10, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}, }}
+    >>> evolve(test_monster, test_enemy)
+    Wow! That is 3 wins for your monster! Your monster glows in a white light and begins to evolve
+    Monster evolved! Stats and move power increased. They have learned ['flamethrower', 'slash']
+    Enemy has grown stronger!
     """
     if monster['wins'] >= 3:
         print(
