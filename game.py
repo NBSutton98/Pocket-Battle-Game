@@ -2,6 +2,15 @@ import random
 
 
 def make_monster():
+    """
+    Create a monster.
+
+    :postcondition: create a well-formed dictionary that represents the monster.
+    :return: a monster
+
+    >>> make_monster()
+    {'wins': 0, 'hp': 20, 'max_hp': 5, 'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}}, 'location_x': 0, 'location_y': 0, 'potion_uses': 2}
+    """
     monster = {'wins': 0, 'hp': 20, 'max_hp': 5,
         'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}}, 'location_x': 0,
         'location_y': 0, 'potion_uses': 2}
@@ -9,6 +18,15 @@ def make_monster():
 
 
 def make_enemy():
+    """
+    Create an enemy.
+
+    :postcondition: create a well-formed dictionary that represents the enemy.
+    :return: a monster
+
+    >>> make_enemy()
+    {'hp': 10, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}}}
+    """
     enemy = {'hp': 10, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}, }}
     return enemy
 
