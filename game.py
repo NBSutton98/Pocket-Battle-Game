@@ -32,7 +32,7 @@ def make_final_boss():
     >>> make_final_boss()
     {'hp': 10, 'max_hp': 50, 'moves': {'bite': {'power': 1, 'accuracy': 90}}}
     """
-    final_boss = {'hp': 50, 'max_hp': 50, 'moves': {'Big Punch': {'power': 10, 'accuracy': 90}, }}
+    final_boss = {'hp': 50, 'max_hp': 50, 'moves': {'big punch': {'power': 10, 'accuracy': 90}, }}
     return final_boss
 
 
