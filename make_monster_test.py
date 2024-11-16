@@ -22,3 +22,11 @@ class Test(TestCase):
     def test_make_monster_potions(self):
         monster = make_monster()
         self.assertIn("potion_uses", monster.keys())
+
+    def test_make_monster_ember(self):
+        monster = make_monster()
+        self.assertIn("ember", monster['moves'].keys())
+
+    def test_make_monster_power(self):
+        monster = make_monster()
+        self.assertIn("power", monster['moves']['ember'].keys())
