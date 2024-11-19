@@ -7,7 +7,7 @@ from unittest.mock import patch
 class Test(TestCase):
 
     @patch('sys.stdout', new_callable=io.StringIO)
-    @patch('builtins.input', side_effect=['1'])  # Mocking input to simulate user entering '1'
+    @patch('builtins.input', side_effect=['1'])
     def test_use_potion(self, mock_input, mock_stdout):
         test_monster = {'hp': 1, 'max_hp': 10, 'potion_uses': 3}
         use_potion(test_monster)
