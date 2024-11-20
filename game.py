@@ -6,7 +6,7 @@ def intro():
     print("this is how you play")
 
 
-def make_monster():
+def make_monster() -> dict:
     """
     Create a monster.
 
@@ -22,7 +22,7 @@ def make_monster():
     return monster
 
 
-def make_final_boss():
+def make_final_boss()-> dict:
     """
     Create a final boss.
 
@@ -36,7 +36,7 @@ def make_final_boss():
     return final_boss
 
 
-def make_enemy():
+def make_enemy()-> dict:
     """
     Create an enemy.
 
@@ -50,7 +50,7 @@ def make_enemy():
     return enemy
 
 
-def potion(monster):
+def potion(monster: dict):
     """
     Heal your monster
 
@@ -73,7 +73,7 @@ def potion(monster):
         print("No potions left to use!")
 
 
-def use_potion(monster):
+def use_potion(monster: dict)-> str:
     """
     Heal monster
 
@@ -100,7 +100,7 @@ def use_potion(monster):
             print("Invalid choice! Please enter '1' or '2'.")
 
 
-def evolve(monster, enemy):
+def evolve(monster: dict, enemy: dict):
     """
     Evolve my monster and enemy
 
@@ -138,7 +138,7 @@ def evolve(monster, enemy):
         print("Enemy has grown stronger!")
 
 
-def evolve_final(monster):
+def evolve_final(monster: dict):
     """
     Evolve monster to final stage
 
@@ -166,7 +166,7 @@ def evolve_final(monster):
             f"Monster has reached final evolution! Stats and move power have maxed out. They have learned {list(monster['moves'].keys())}")
 
 
-def move_choice(monster):
+def move_choice(monster: dict)-> str:
     """
     Select monster move
 
@@ -196,7 +196,7 @@ def move_choice(monster):
             print("Invalid choice! Please enter '1' or '2'.")
 
 
-def battle(monster, enemy):
+def battle(monster: dict, enemy:dict) ->str:
     """
     Simulate battle
 
@@ -236,7 +236,7 @@ def battle(monster, enemy):
     print("Battle over!")
 
 
-def is_alive(monster):
+def is_alive(monster: dict) ->dict:
     """
     Check monster HP
 
@@ -253,7 +253,7 @@ def is_alive(monster):
     return monster['hp'] > 0
 
 
-def use_move(monster, enemy, move_name):
+def use_move(monster: dict, enemy: dict, move_name: str):
     """
     Use move
 
@@ -286,7 +286,7 @@ def use_move(monster, enemy, move_name):
         print(f"{move_name.capitalize()}, but it missed!")
 
 
-def final_battle(monster, final_boss):
+def final_battle(monster: dict, final_boss: dict)-> bool:
     """
     Engage in the final battle between the monster and the final boss.
 
@@ -311,7 +311,7 @@ def final_battle(monster, final_boss):
         return False
 
 
-def make_board(rows, columns):
+def make_board(rows: int, columns: int)-> dict:
     """
     Create a Grid
 
@@ -364,7 +364,7 @@ def make_board(rows, columns):
     return board
 
 
-def describe_current_location(board, monster):
+def describe_current_location(board: dict, monster: dict):
     """
     Describe the current location of the monster
 
@@ -411,7 +411,7 @@ def get_user_choice():
             print("That's not a valid direction.")
 
 
-def validate_move(monster, direction):
+def validate_move(monster: dict, direction: str)-> bool:
     """
     Validate user movement
 
@@ -455,7 +455,7 @@ def validate_move(monster, direction):
         return False
 
 
-def move_monster(monster, direction):
+def move_monster(monster: dict, direction: str)-> bool:
     """
     Move the monster
 
