@@ -13,8 +13,8 @@ def make_monster() -> dict:
     :postcondition: create a well-formed dictionary that represents the monster.
     :return: a monster
 
-    >>> make_monster()
-    {'wins': 0, 'hp': 2, 'max_hp': 10, 'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
+    >>> make_monster() {'wins': 0, 'hp': 2, 'max_hp': 10, 'moves': {'ember': {'power': 5, 'accuracy': 80},
+    'scratch': {'power': 3, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
     """
     monster = {'wins': 0, 'hp': 5, 'max_hp': 10,
                'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}},
@@ -22,7 +22,7 @@ def make_monster() -> dict:
     return monster
 
 
-def make_final_boss()-> dict:
+def make_final_boss() -> dict:
     """
     Create a final boss.
 
@@ -36,7 +36,7 @@ def make_final_boss()-> dict:
     return final_boss
 
 
-def make_enemy()-> dict:
+def make_enemy() -> dict:
     """
     Create an enemy.
 
@@ -61,7 +61,8 @@ def potion(monster: dict):
     :postcondition: take monster hp and replace it with the value of the max_hp
     :return: healed monster
 
-    >>> damaged_monster = {'wins': 0, 'hp': 1, 'max_hp': 10, 'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
+    >>> damaged_monster = {'wins': 0, 'hp': 1, 'max_hp': 10, 'moves': {'ember': {'power': 5, 'accuracy': 80},
+    'scratch': {'power': 3, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
     >>> potion(damaged_monster)
     Potion used! Monster's HP restored to max. Potions left: 1
     """
@@ -73,7 +74,7 @@ def potion(monster: dict):
         print("No potions left to use!")
 
 
-def use_potion(monster: dict)-> str:
+def use_potion(monster: dict) -> str:
     """
     Heal monster
 
@@ -113,7 +114,8 @@ def evolve(monster: dict, enemy: dict):
     :postcondition: update max hp, change move names and update power of moves
     :return: monster and enemy
 
-    >>> test_monster = {'wins': 3, 'hp': 20, 'max_hp': 5,'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
+    >>> test_monster = {'wins': 3, 'hp': 20, 'max_hp': 5,'moves': {'ember': {'power': 5, 'accuracy': 80},
+     'scratch': {'power': 3, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
     >>> test_enemy = {'hp': 10, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}, }}
     >>> evolve(test_monster, test_enemy)
     Wow! That is 3 wins for your monster! Your monster glows in a white light and begins to evolve
@@ -122,7 +124,8 @@ def evolve(monster: dict, enemy: dict):
     """
     if monster['wins'] >= 3:
         print(
-            f'Wow! That is {monster['wins']} wins for your monster! Your monster glows in a white light and begins to evolve')
+            f'Wow! That is {monster['wins']} wins for your monster! Your monster glows in a white light and begins '
+            f'to evolve')
         monster['max_hp'] += 10
         monster['hp'] = monster['max_hp']
         monster['moves']['flamethrower'] = monster['moves'].pop('ember')
@@ -149,13 +152,16 @@ def evolve_final(monster: dict):
     :postcondition: update max hp, change move names and update power of moves
     :return: monster
 
-    >>> test_monster = {'wins': 6, 'hp': 20, 'max_hp': 10,'moves': {'flamethrower': {'power': 10, 'accuracy': 80}, 'slash': {'power': 6, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
+    >>> test_monster = {'wins': 6, 'hp': 20, 'max_hp': 10,'moves': {'flamethrower': {'power': 10, 'accuracy': 80},
+     'slash': {'power': 6, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
     >>> evolve_final(test_monster)
     Wow! That is 6 wins for your monster! Your monster glows in a white light and begins to evolve
-    Monster has reached final evolution! Stats and move power have maxed out. They have learned ['fire blast', 'crush']    """
+    Monster has reached final evolution! Stats and move power have maxed out. They have learned ['fire blast', 'crush']
+    """
     if monster['wins'] >= 6:
         print(
-            f'Wow! That is {monster['wins']} wins for your monster! Your monster glows in a white light and begins to evolve')
+            f'Wow! That is {monster['wins']} wins for your monster! Your monster glows in a white light and begins to'
+            f' evolve')
         monster['max_hp'] += 10
         monster['hp'] = monster['max_hp']
         monster['moves']['fire blast'] = monster['moves'].pop('flamethrower')
@@ -163,10 +169,11 @@ def evolve_final(monster: dict):
         monster['moves']['crush'] = monster['moves'].pop('slash')
         monster['moves']['crush']['power'] *= 2
         print(
-            f"Monster has reached final evolution! Stats and move power have maxed out. They have learned {list(monster['moves'].keys())}")
+            f"Monster has reached final evolution! Stats and move power have maxed out. They have learned"
+            f" {list(monster['moves'].keys())}")
 
 
-def move_choice(monster: dict)-> str:
+def move_choice(monster: dict) -> str:
     """
     Select monster move
 
@@ -178,16 +185,19 @@ def move_choice(monster: dict)-> str:
     :postcondition: get user input and access monster moves, if move exists otherwise get user input
     :return: monster move
 
-    >>>test_monster = {'wins': 0, 'hp': 5, 'max_hp': 10,'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2} # doctest: +SKIP
+    >>>test_monster = {'wins': 0, 'hp': 5, 'max_hp': 10,'moves': {'ember': {'power': 5, 'accuracy': 80},
+     'scratch': {'power': 3, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2} # doctest: +SKIP
     >>>move_choice(monster) # doctest: +SKIP
     'ember'
     """
     while True:
         move_names = list(monster['moves'].keys())
         print(
-            f"1. {move_names[0].capitalize()} (Power: {monster['moves'][move_names[0]]['power']}, Accuracy: {monster['moves'][move_names[0]]['accuracy']}%)")
+            f"1. {move_names[0].capitalize()} (Power: {monster['moves'][move_names[0]]['power']},"
+            f" Accuracy: {monster['moves'][move_names[0]]['accuracy']}%)")
         print(
-            f"2. {move_names[1].capitalize()} (Power: {monster['moves'][move_names[1]]['power']}, Accuracy: {monster['moves'][move_names[1]]['accuracy']}%)")
+            f"2. {move_names[1].capitalize()} (Power: {monster['moves'][move_names[1]]['power']},"
+            f" Accuracy: {monster['moves'][move_names[1]]['accuracy']}%)")
         move_input = input("Choose a move (1 or 2): ")
         if move_input in ["1", "2"]:
             user_move = move_names[int(move_input) - 1]
@@ -196,11 +206,12 @@ def move_choice(monster: dict)-> str:
             print("Invalid choice! Please enter '1' or '2'.")
 
 
-def battle(monster: dict, enemy:dict) ->str:
+def battle(monster: dict, enemy: dict) -> str:
     """
     Simulate battle
 
-    This function takes the monster and enemy dictionaries and allows user input to effect hp using moves and their power
+    This function takes the monster and enemy dictionaries and allows user input to effect hp using moves and their
+    power
 
     :param monster: a dictionary
     :param enemy: a dictionary
@@ -209,7 +220,8 @@ def battle(monster: dict, enemy:dict) ->str:
     :postcondition: take user input to select move names, apply the power value to reduce your hp of opponent
     :return: "Monster Wins!" or "Enemy Wins!"
 
-    >>> test_monster = {'wins': 3, 'hp': 20, 'max_hp': 5,'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
+    >>> test_monster = {'wins': 3, 'hp': 20, 'max_hp': 5,'moves': {'ember': {'power': 5, 'accuracy': 80},
+     'scratch': {'power': 3, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
     >>> test_enemy = {'hp': 10, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}, }}
     >>> battle(test_monster, test_enemy) # doctest: +SKIP
     "Monster wins!"
@@ -236,7 +248,7 @@ def battle(monster: dict, enemy:dict) ->str:
     print("Battle over!")
 
 
-def is_alive(monster: dict) ->dict:
+def is_alive(monster: dict) -> bool:
     """
     Check monster HP
 
@@ -268,7 +280,8 @@ def use_move(monster: dict, enemy: dict, move_name: str):
     :precondition: move_name must be a string referring to a key in the monster dictionary
     :return: updated monster and enemy hp
 
-    >>>test_monster = {'wins': 0, 'hp': 5, 'max_hp': 10,'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}},'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
+    >>>test_monster = {'wins': 0, 'hp': 5, 'max_hp': 10,'moves': {'ember': {'power': 5, 'accuracy': 80},
+     'scratch': {'power': 3, 'accuracy': 100}},'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
     >>>test_enemy = {'hp': 10, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}}}
     >>>test_move_name = 'ember'
     >>>use_move(monster, test_enemy, test_move_name) # doctest: +SKIP
@@ -286,7 +299,7 @@ def use_move(monster: dict, enemy: dict, move_name: str):
         print(f"{move_name.capitalize()}, but it missed!")
 
 
-def final_battle(monster: dict, final_boss: dict)-> bool:
+def final_battle(monster: dict, final_boss: dict) -> bool:
     """
     Engage in the final battle between the monster and the final boss.
 
@@ -311,7 +324,7 @@ def final_battle(monster: dict, final_boss: dict)-> bool:
         return False
 
 
-def make_board(rows: int, columns: int)-> dict:
+def make_board(rows: int, columns: int) -> dict:
     """
     Create a Grid
 
@@ -411,7 +424,7 @@ def get_user_choice():
             print("That's not a valid direction.")
 
 
-def validate_move(monster: dict, direction: str)-> bool:
+def validate_move(monster: dict, direction: str) -> bool:
     """
     Validate user movement
 
@@ -455,7 +468,7 @@ def validate_move(monster: dict, direction: str)-> bool:
         return False
 
 
-def move_monster(monster: dict, direction: str)-> bool:
+def move_monster(monster: dict, direction: str) -> bool:
     """
     Move the monster
 

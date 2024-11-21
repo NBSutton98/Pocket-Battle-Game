@@ -1,6 +1,7 @@
 from unittest import TestCase
 from game import make_enemy
 
+
 class TestMakeEnemy(TestCase):
     def test_enemy_hp(self):
         enemy = make_enemy()
@@ -21,4 +22,3 @@ class TestMakeEnemy(TestCase):
     def test_enemy_bite_power(self):
         enemy = make_enemy()
         self.assertIn("power", enemy['moves']['bite'].keys())
-
