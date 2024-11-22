@@ -1,4 +1,5 @@
 import random
+import itertools
 
 
 def intro():
@@ -32,7 +33,8 @@ def make_final_boss() -> dict:
     >>> make_final_boss()
     {'hp': 10, 'max_hp': 50, 'moves': {'bite': {'power': 1, 'accuracy': 90}}}
     """
-    final_boss = {'hp': 50, 'max_hp': 50, 'moves': {'big punch': {'power': 10, 'accuracy': 90}, }}
+    final_boss = {'hp': 50, 'max_hp': 50,
+                  'moves': {'big punch': {'power': 10, 'accuracy': 90}, 'hyper beam': {'power': 15, 'accuracy': 100}}}
     return final_boss
 
 
@@ -46,7 +48,8 @@ def make_enemy() -> dict:
     >>> make_enemy()
     {'hp': 10, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}}}
     """
-    enemy = {'hp': 5, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}, }}
+    enemy = {'hp': 1, 'max_hp': 10,
+             'moves': {'bite': {'power': 1, 'accuracy': 90}, 'punch': {'power': 3, 'accuracy': 100}}}
     return enemy
 
 
@@ -226,6 +229,7 @@ def battle(monster: dict, enemy: dict) -> str:
     >>> battle(test_monster, test_enemy) # doctest: +SKIP
     "Monster wins!"
     """
+    enemy_move_cycle = itertools.cycle(enemy['moves'])
     print("The battle begins!")
     while is_alive(monster):
         print("Monster's turn:")
@@ -238,9 +242,8 @@ def battle(monster: dict, enemy: dict) -> str:
             use_potion(monster)
             return "Monster wins!"
         print("enemy's turn:")
-        enemy_move = next(iter(enemy['moves']))
+        enemy_move = next(enemy_move_cycle)
         use_move(monster, enemy, enemy_move)
-
         if monster['hp'] <= 0:
             print("Monster defeated! Sent back to start.")
             return "Enemy wins!"
@@ -548,7 +551,21 @@ def main():
             final_boss = make_final_boss()
             final_battle_result = final_battle(monster, final_boss)
             if final_battle_result:
-                print("You have completed your journey!")
+                art = """       
+                                \``._________.''/ 
+                                 \             / 
+                         .--.--, / .':.   .':. \
+                        /__:  /  | '::' . '::' |
+                           / /   |`.   ._.   .'|
+                          / /    |.'         '.|
+                         /___-_-,|.\  \   /  /.|
+                              // |''\.;   ;,/ '|
+                              `==|:=         =:|
+                                 `.          .'
+                                    :-._____.-:
+                                  `''       `''
+                        """
+                print("You have completed your journey!" + art)
                 break
             else:
                 print("Game over! Your monster has been defeated.")
