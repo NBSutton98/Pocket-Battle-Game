@@ -8,7 +8,7 @@ class TestBattle(TestCase):
     @patch('sys.stdout', new_callable=io.StringIO)
     @patch('builtins.input', side_effect=['1', '1'])
     @patch('random.randint', return_value=50)
-    def test_battle_monster_wins(self, mock_stdout, mock_input, mock_randint):
+    def test_battle_monster_wins(self, _, __, ___):
         monster = make_monster()
         enemy = make_enemy()
         enemy['hp'] = 1
@@ -19,7 +19,7 @@ class TestBattle(TestCase):
     @patch('sys.stdout', new_callable=io.StringIO)
     @patch('builtins.input', side_effect=['1'])
     @patch('random.randint', return_value=50)
-    def test_battle_monster_lose(self, mock_stdout, mock_input, mock_randint):
+    def test_battle_monster_lose(self, _, __, ___):
         monster = make_monster()
         monster['hp'] = 1
         enemy = {'hp': 100, 'max_hp': 100,
@@ -31,7 +31,7 @@ class TestBattle(TestCase):
     @patch('sys.stdout', new_callable=io.StringIO)
     @patch('builtins.input', side_effect=['1', '1', '1'])
     @patch('random.randint', return_value=50)
-    def test_battle_monster_wins_multiple_turns(self, mock_stdout, mock_input, mock_randint):
+    def test_battle_monster_wins_multiple_turns(self, _, __, ___):
         monster = make_monster()
         enemy = make_enemy()
         enemy['hp'] = 5
@@ -42,7 +42,7 @@ class TestBattle(TestCase):
     @patch('sys.stdout', new_callable=io.StringIO)
     @patch('builtins.input', side_effect=['1', '1'])
     @patch('random.randint', return_value=50)
-    def test_battle_monster_lose_multi_turns(self, mock_stdout, mock_input, mock_randint):
+    def test_battle_monster_lose_multi_turns(self, _, __, ___):
         monster = make_monster()
         enemy = {'hp': 50, 'max_hp': 100,
                  'moves': {'bite': {'power': 10, 'accuracy': 90}, 'punch': {'power': 10, 'accuracy': 100}}}
