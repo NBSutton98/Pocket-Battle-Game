@@ -3,22 +3,24 @@ import itertools
 
 
 def intro():
-    print("welcome to this place")
-    print("this is how you play")
+    print("Thank you for trying my first game, this will be a battle simulation featuring your very own monster, "
+          "your objective is to get a total of 6 battle wins and defeat the final challenge, good luck! ")
+    print("Well, it is finally time....Go set off on your adventure, but make sure to bring that crazy monster of "
+          "yours for protection, umm... what was its name again?")
 
 
-def make_monster() -> dict:
+def make_monster(name) -> dict:
     """
     Create a monster.
 
     :postcondition: create a well-formed dictionary that represents the monster.
     :return: a monster
 
-    >>> make_monster() {'wins': 0, 'hp': 10, 'max_hp': 10, 'moves': {'ember': {'power': 5, 'accuracy': 80},
+    >>> make_monster() {'name':name 'wins': 0, 'hp': 10, 'max_hp': 10, 'moves': {'ember': {'power': 5, 'accuracy': 80},
     'scratch': {'power': 3, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
     """
-    monster = {'wins': 0, 'hp': 10, 'max_hp': 10,
-               'moves': {'ember': {'power': 3, 'accuracy': 80}, 'scratch': {'power': 1, 'accuracy': 100}},
+    monster = {'name': name, 'wins': 0, 'hp': 10, 'max_hp': 10,
+               'moves': {'ember': {'power': 3, 'accuracy': 80}, 'scratch': {'power': 2, 'accuracy': 100}},
                'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
     return monster
 
@@ -33,7 +35,7 @@ def make_final_boss() -> dict:
     >>> make_final_boss()
     {'hp': 10, 'max_hp': 50, 'moves': {'bite': {'power': 1, 'accuracy': 90}}}
     """
-    final_boss = {'hp': 50, 'max_hp': 50,
+    final_boss = {'hp': 50, 'max_hp': 50, 'name': 'Skibidi',
                   'moves': {'big punch': {'power': 10, 'accuracy': 90}, 'hyper beam': {'power': 15, 'accuracy': 100}}}
     return final_boss
 
@@ -48,7 +50,7 @@ def make_enemy() -> dict:
     >>> make_enemy()
     {'hp': 10, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}}}
     """
-    enemy = {'hp': 5, 'max_hp': 5,
+    enemy = {'hp': 5, 'max_hp': 5, "name": "Pidgey",
              'moves': {'bite': {'power': 2, 'accuracy': 100}, 'punch': {'power': 1, 'accuracy': 100}}}
     return enemy
 
@@ -72,7 +74,7 @@ def potion(monster: dict):
     if monster['potion_uses'] > 0:
         monster['hp'] = monster['max_hp']
         monster['potion_uses'] -= 1
-        print(f"Potion used! Monster's HP restored to max. Potions left: {monster['potion_uses']}")
+        print(f"Potion used! {monster['name']}s HP restored to max. Potions left: {monster['potion_uses']}")
     else:
         print("No potions left to use!")
 
@@ -96,10 +98,10 @@ def use_potion(monster: dict) -> str:
         if healing in ["1", "2"]:
             if healing == '1':
                 potion(monster)
-                return "Monster wins!"
+                return f"{monster['name']} wins!"
             elif healing == '2':
                 print("Continuing without healing.")
-                return "Monster wins!"
+                return f"{monster['name']} wins!"
         else:
             print("Invalid choice! Please enter '1' or '2'.")
 
@@ -135,13 +137,15 @@ def evolve(monster: dict, enemy: dict):
         monster['moves']['flamethrower']['power'] *= 2
         monster['moves']['slash'] = monster['moves'].pop('scratch')
         monster['moves']['slash']['power'] *= 2
-        print(f"Monster evolved! Stats and move power increased. They have learned {list(monster['moves'].keys())}")
+        print(
+            f"{monster['name']} evolved! Stats and move power increased. They have learned {list(monster['moves'].keys())}")
 
         enemy['max_hp'] += 8
         enemy['hp'] = enemy['max_hp']
         enemy['moves'] = {move: {'power': data['power'] + 2, 'accuracy': data['accuracy']} for move, data in
                           enemy['moves'].items()}
-        print("Enemy has grown stronger!")
+        enemy['name'] = 'Balloonist'
+        print(f"Your enemy has evolved into, {enemy['name']}")
 
 
 def evolve_final(monster: dict):
@@ -163,7 +167,8 @@ def evolve_final(monster: dict):
     """
     if monster['wins'] >= 6:
         print(
-            f'Wow! That is {monster['wins']} wins for your monster! Your monster glows in a white light and begins to'
+            f'Wow! That is {monster['wins']} wins for {monster['name']}! Your monster glows in a white light and '
+            f'begins to'
             f' evolve')
         monster['max_hp'] += 10
         monster['hp'] = monster['max_hp']
@@ -172,7 +177,7 @@ def evolve_final(monster: dict):
         monster['moves']['crush'] = monster['moves'].pop('slash')
         monster['moves']['crush']['power'] *= 2
         print(
-            f"Monster has reached final evolution! Stats and move power have maxed out. They have learned"
+            f"{monster['name']} has reached final evolution! Stats and move power have maxed out. They have learned"
             f" {list(monster['moves'].keys())}")
 
 
@@ -232,16 +237,16 @@ def battle(monster: dict, enemy: dict) -> str:
     enemy_move_cycle = itertools.cycle(enemy['moves'])
     print("The battle begins!")
     while is_alive(monster):
-        print("Monster's turn:")
+        print(f"{monster['name']} turn:")
         move = move_choice(monster)
         use_move(monster, enemy, move)
         if enemy['hp'] <= 0:
-            print("Enemy defeated!")
+            print(f"{enemy['name']} defeated!")
             monster['wins'] += 1
             enemy['hp'] = enemy['max_hp']
             use_potion(monster)
-            return "Monster wins!"
-        print("enemy's turn:")
+            return f"{monster['name']} wins!"
+        print(f"{enemy['name']} turn:")
         enemy_move = next(enemy_move_cycle)
         use_move(enemy, monster, enemy_move)
         if monster['hp'] <= 0:
@@ -317,13 +322,14 @@ def final_battle(monster: dict, final_boss: dict) -> bool:
     "Congratulations! Your monster has defeated the final boss and completed its journey!"
     """
     make_final_boss()
-    print(f"Congrats on making it this far, your has {monster['wins']} wins! Time for your final challenge")
+    print(
+        f"Congrats on making it this far, {monster['name']} has {monster['wins']} wins! Time for your final challenge")
     result = battle(monster, final_boss)
-    if result == "Monster wins!":
+    if result == f"{monster['name']} wins!":
         print("Congratulations! Your monster has defeated the final boss and completed its journey!")
         return True
     else:
-        print("Your monster has been defeated by the final boss. Better luck next time!")
+        print(f"{monster['name']} has been defeated by the final boss. Better luck next time!")
         return False
 
 
@@ -346,32 +352,31 @@ def make_board(rows: int, columns: int) -> dict:
      plush queen-sized bed.", '1, 0': "A sunlit bedroom with pastel walls", '1, 1': "A spacious attic converted into a
      relaxing reading nook."}
     """
-    room_descriptions = ["A cozy studio with a warm fireplace and vintage decor.",
-                         "A sunlit bedroom with pastel walls and a plush queen-sized bed.",
-                         "An elegant dining room featuring a marble table and crystal chandelier.",
-                         "A modern kitchen equipped with stainless steel appliances and a breakfast bar.",
-                         "A rustic cabin living room adorned with log furniture and a stone hearth.",
-                         "A serene home office with a large window and minimalist design.",
-                         "A colorful child's playroom filled with toys and whimsical murals.",
-                         "A tranquil bathroom with a soaking tub and soft candlelight.",
-                         "A spacious attic converted into a relaxing reading nook.",
-                         "A chic apartment balcony with potted plants and a bistro table.",
-                         "A luxurious master suite with a private balcony and en-suite bathroom.",
-                         "A bohemian living space with rich textiles and eclectic art.",
-                         "An airy guest room with soft linens and a view of the garden.",
-                         "A sleek modern bathroom with a glass shower and floating vanity.",
-                         "A classic library with built-in bookshelves and a comfortable armchair.",
-                         "An artistic studio filled with canvases, brushes, and vibrant colors.",
-                         "A stylish entryway featuring a large mirror and unique lighting.",
-                         "A cozy den with a sectional sofa and a large screen for movie nights.",
-                         "A minimalist bedroom with a low platform bed and serene color palette.",
-                         "A charming breakfast nook bathed in morning sunlight.",
-                         "An inviting family room with a game table and comfortable seating.",
-                         "A sophisticated office with dark wood furnishings and a vintage desk.",
-                         "A cheerful kitchen with colorful accents and a farmhouse sink.",
-                         "A tranquil meditation room with soft cushions and calming decor.",
-                         "A spacious laundry room with organized shelves and a utility sink.",
-                         "A cozy corner in the basement with a plush rug and soft lighting."]
+    room_descriptions = ["A lush garden courtyard buzzing with glowing fireflies and vibrant flowers.",
+                         "A mystical cave glimmering with crystal formations and hidden pools.",
+                         "A serene beachside shack with the sound of waves crashing nearby.",
+                         "A shadowy forest clearing lit by bioluminescent plants and the soft hoot of owls.",
+                         "A bustling marketplace filled with exotic spices, trinkets, and lively chatter.",
+                         "A hidden library with dusty tomes, secret passageways, and a faint smell of parchment.",
+                         "A windswept cliffside with a lone lighthouse overlooking the vast ocean.",
+                         "An ancient temple with intricate carvings and flickering torches along the walls.",
+                         "A foggy swamp with twisted trees and mysterious glowing eyes watching from the dark.",
+                         "A magical treehouse perched high in the canopy, connected by rope bridges.",
+                         "A quaint village square with cobblestone streets and cozy cottages.",
+                         "A sunlit meadow dotted with colorful wildflowers and gently grazing creatures.",
+                         "An eerie castle dungeon with cold stone walls and faint echoes of dripping water.",
+                         "A vibrant carnival with spinning rides, cheerful music, and the smell of cotton candy.",
+                         "A frozen tundra with sparkling icicles, crunching snow, and the howling wind.",
+                         "A serene waterfall cave with shimmering rainbows and soft moss underfoot.",
+                         "A mysterious underground laboratory with bubbling beakers and glowing monitors.",
+                         "A cozy inn with a roaring fire, soft chairs, and the hum of cheerful conversation.",
+                         "A treetop sanctuary with hanging lanterns and the rustling of leaves in the breeze.",
+                         "A windswept desert oasis with crystal-clear water and swaying palm trees.",
+                         "A stormy mountain peak with jagged rocks, swirling mist, and the roar of thunder.",
+                         "An abandoned train station with overgrown tracks and a faint, haunting whistle.",
+                         "A peaceful shrine nestled within a bamboo grove, its air filled with incense.",
+                         "A cavernous mine with tracks leading to deep, shadowy tunnels.",
+                         "A moonlit cliff surrounded by glowing mushrooms and soft whispers on the wind."]
 
     board = {}
     for row in range(rows):
@@ -528,7 +533,8 @@ def check_for_foes():
 def main():
     intro()
     board = make_board(5, 5)
-    monster = make_monster()
+    name = input("What is your monsters name?: ")
+    monster = make_monster(name)
     enemy = make_enemy()
 
     while True and is_alive(monster):
