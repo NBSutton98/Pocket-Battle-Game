@@ -4,12 +4,12 @@ import itertools
 
 def intro():
     print("Thank you for trying my first game, this will be a battle simulation featuring your very own monster, "
-          "your objective is to get a total of 6 battle wins and defeat the final challenge, good luck! ")
+          "your objective is, explore, get a total of 6 battle wins and defeat the final challenge, good luck! ")
     print("Well, it is finally time....Go set off on your adventure, but make sure to bring that crazy monster of "
           "yours for protection, umm... what was its name again?")
 
 
-def make_monster(name) -> dict:
+def make_monster(name: str) -> dict:
     """
     Create a monster.
 
@@ -17,7 +17,7 @@ def make_monster(name) -> dict:
     :return: a monster
 
     >>> make_monster('nick')
-    {'name': 'nick', 'wins': 0, 'hp': 10, 'max_hp': 10, 'moves': {'ember': {'power': 3, 'accuracy': 80},'scratch': {'power': 2, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
+    {'name': 'nick', 'wins': 0, 'hp': 10, 'max_hp': 10, 'moves': {'ember': {'power': 3, 'accuracy': 80}, 'scratch': {'power': 2, 'accuracy': 100}}, 'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
     """
     monster = {'name': name, 'wins': 0, 'hp': 10, 'max_hp': 10,
                'moves': {'ember': {'power': 3, 'accuracy': 80}, 'scratch': {'power': 2, 'accuracy': 100}},
@@ -48,7 +48,7 @@ def make_enemy() -> dict:
     :return: a monster
 
     >>> make_enemy()
-    {'hp': 10, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}}}
+    {'hp': 5, 'max_hp': 5, 'name': 'Pidgey', 'moves': {'bite': {'power': 2, 'accuracy': 100}, 'punch': {'power': 1, 'accuracy': 100}}}
     """
     enemy = {'hp': 5, 'max_hp': 5, "name": "Pidgey",
              'moves': {'bite': {'power': 2, 'accuracy': 100}, 'punch': {'power': 1, 'accuracy': 100}}}
@@ -372,11 +372,11 @@ def make_board(rows: int, columns: int) -> dict:
     """
     room_descriptions = ["A lush garden courtyard buzzing with glowing fireflies and vibrant flowers.",
                          "A mystical cave glimmering with crystal formations and hidden pools.",
-                         "A serene beachside shack with the sound of waves crashing nearby.",
+                         "A serene beach side shack with the sound of waves crashing nearby.",
                          "A shadowy forest clearing lit by bioluminescent plants and the soft hoot of owls.",
                          "A bustling marketplace filled with exotic spices, trinkets, and lively chatter.",
                          "A hidden library with dusty tomes, secret passageways, and a faint smell of parchment.",
-                         "A windswept cliffside with a lone lighthouse overlooking the vast ocean.",
+                         "A windswept cliff side with a lone lighthouse overlooking the vast ocean.",
                          "An ancient temple with intricate carvings and flickering torches along the walls.",
                          "A foggy swamp with twisted trees and mysterious glowing eyes watching from the dark.",
                          "A magical treehouse perched high in the canopy, connected by rope bridges.",

@@ -1,6 +1,7 @@
 from unittest import TestCase
 from game import make_final_boss
 
+
 class Test(TestCase):
     def test_make_final_hp(self):
         final_boss = make_final_boss()
