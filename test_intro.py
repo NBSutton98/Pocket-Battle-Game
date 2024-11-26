@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch
 from io import StringIO
-from game import intro
+from movement import intro
 
 
 class TestIntro(TestCase):
@@ -16,5 +16,3 @@ class TestIntro(TestCase):
         intro()
         actual = mock_stdout.getvalue()
         self.assertEqual(actual, expected)
-
-

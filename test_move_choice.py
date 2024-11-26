@@ -1,5 +1,5 @@
 from unittest import TestCase
-from game import move_choice
+from battle import move_choice
 import io
 from unittest.mock import patch
 

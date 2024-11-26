@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from game import is_alive
-from game import make_monster
+from battle import is_alive
+from characters import make_monster
 
 
 class Test(TestCase):

@@ -1,5 +1,5 @@
 from unittest import TestCase
-from game import make_final_boss
+from characters import make_final_boss
 
 
 class Test(TestCase):

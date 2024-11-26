@@ -1,6 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch
-from game import make_monster, make_enemy, use_move
+from characters import make_monster, make_enemy
+from battle import use_move
 
 
 class TestUseMove(TestCase):

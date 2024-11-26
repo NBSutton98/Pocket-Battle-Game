@@ -1,5 +1,5 @@
 from unittest import TestCase
-from game import use_potion
+from healing import use_potion
 import io
 from unittest.mock import patch
 

@@ -2,7 +2,7 @@ import io
 from unittest import TestCase
 from unittest.mock import patch
 
-from game import potion
+from healing import potion
 
 
 class TestPotion(TestCase):

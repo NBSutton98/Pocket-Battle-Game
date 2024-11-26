@@ -1,5 +1,5 @@
 from unittest import TestCase
-from game import make_enemy
+from characters import make_enemy
 
 
 class TestMakeEnemy(TestCase):

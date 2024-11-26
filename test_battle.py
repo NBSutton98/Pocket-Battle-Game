@@ -1,7 +1,8 @@
 from unittest import TestCase
 from unittest.mock import patch
 import io
-from game import battle, make_monster, make_enemy
+from battle import battle
+from characters import make_monster, make_enemy
 
 
 class TestBattle(TestCase):

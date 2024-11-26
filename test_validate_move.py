@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch
-import game
-from game import get_user_choice, make_monster
+from characters import make_monster
+from movement import get_user_choice, validate_move
 
 
 class Test(TestCase):
@@ -12,7 +12,7 @@ class Test(TestCase):
         character = make_monster(name)
         direction = get_user_choice()
         expected = True
-        actual = game.validate_move(character, direction)
+        actual = validate_move(character, direction)
         self.assertEqual(expected, actual)
 
     @patch('builtins.input', side_effect=['w'])
@@ -20,7 +20,7 @@ class Test(TestCase):
         character = {"x-coordinate": 0, "y-coordinate": 1, "current_hp": 5}
         direction = get_user_choice()
         expected = True
-        actual = game.validate_move(character, direction)
+        actual = validate_move(character, direction)
         self.assertEqual(expected, actual)
 
     @patch('builtins.input', side_effect=['d'])
@@ -29,7 +29,7 @@ class Test(TestCase):
         character = make_monster(name)
         direction = get_user_choice()
         expected = True
-        actual = game.validate_move(character, direction)
+        actual = validate_move(character, direction)
         self.assertEqual(expected, actual)
 
     @patch('builtins.input', side_effect=['a'])
@@ -37,7 +37,7 @@ class Test(TestCase):
         character = {"x-coordinate": 1, "y-coordinate": 0, "current_hp": 5}
         direction = get_user_choice()
         expected = True
-        actual = game.validate_move(character, direction)
+        actual = validate_move(character, direction)
         self.assertEqual(expected, actual)
 
     @patch('builtins.input', side_effect=['w'])
@@ -45,7 +45,7 @@ class Test(TestCase):
         character = {"x-coordinate": 0, "y-coordinate": 0, "current_hp": 5}
         direction = get_user_choice()
         expected = False
-        actual = game.validate_move(character, direction)
+        actual = validate_move(character, direction)
         self.assertEqual(expected, actual)
 
     @patch('builtins.input', side_effect=['s'])
@@ -53,7 +53,7 @@ class Test(TestCase):
         character = {"x-coordinate": 0, "y-coordinate": 4, "current_hp": 5}
         direction = get_user_choice()
         expected = False
-        actual = game.validate_move(character, direction)
+        actual = validate_move(character, direction)
         self.assertEqual(expected, actual)
 
     @patch('builtins.input', side_effect=['a'])
@@ -61,7 +61,7 @@ class Test(TestCase):
         character = {"x-coordinate": 0, "y-coordinate": 0, "current_hp": 5}
         direction = get_user_choice()
         expected = False
-        actual = game.validate_move(character, direction)
+        actual = validate_move(character, direction)
         self.assertEqual(expected, actual)
 
     @patch('builtins.input', side_effect=['d'])
@@ -69,5 +69,5 @@ class Test(TestCase):
         character = {"x-coordinate": 4, "y-coordinate": 0, "current_hp": 5}
         direction = get_user_choice()
         expected = False
-        actual = game.validate_move(character, direction)
+        actual = validate_move(character, direction)
         self.assertEqual(expected, actual)

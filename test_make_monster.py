@@ -1,5 +1,5 @@
 from unittest import TestCase
-from game import make_monster
+from characters import make_monster
 
 
 class Test(TestCase):

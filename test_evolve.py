@@ -1,9 +1,8 @@
 import io
 from unittest import TestCase
 from unittest.mock import patch
-
-from game import evolve
-from game import make_enemy
+from evolve import evolve
+from characters import make_enemy
 
 
 class Test(TestCase):
@@ -42,7 +41,7 @@ class Test(TestCase):
 
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_evolve_fail_2_win(self, mock_stdout):
-        test_monster = {'name': 'nick','wins': 2, 'hp': 5, 'max_hp': 10,
+        test_monster = {'name': 'nick', 'wins': 2, 'hp': 5, 'max_hp': 10,
                         'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}},
                         'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
         test_enemy = make_enemy()
