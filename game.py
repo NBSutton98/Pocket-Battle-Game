@@ -38,7 +38,7 @@ def make_final_boss() -> dict:
     {'hp': 50, 'max_hp': 50, 'name': 'Skibidi', 'moves': {'big punch': {'power': 10, 'accuracy': 90},
     'hyper beam': {'power': 15, 'accuracy': 100}}}
     """
-    final_boss = {'hp': 50, 'max_hp': 50, 'name': 'Skibidi',
+    final_boss = {'hp': 30, 'max_hp': 30, 'name': 'Skibidi',
                   'moves': {'big punch': {'power': 10, 'accuracy': 90}, 'hyper beam': {'power': 15, 'accuracy': 100}}}
     return final_boss
 
@@ -187,7 +187,7 @@ def evolve_final(monster: dict):
             f'Wow! That is {monster['wins']} wins for {monster['name']}! Your monster glows in a white light and '
             f'begins to'
             f' evolve')
-        monster['max_hp'] += 10
+        monster['max_hp'] += 20
         monster['hp'] = monster['max_hp']
         monster['moves']['fire blast'] = monster['moves'].pop('flamethrower')
         monster['moves']['fire blast']['power'] *= 2
@@ -200,10 +200,10 @@ def evolve_final(monster: dict):
 
 def move_choice(monster: dict) -> str:
     """
-    Select monster move
+    Select monster move.
 
     This function accesses the monster move dictionary and prompts the user to select one of 2 the moves,
-    preventing any other input
+    preventing any other input.
 
     :param monster: a dictionary
     :precondition: monster is a well-formed dictionary that represents a monster
@@ -219,22 +219,20 @@ def move_choice(monster: dict) -> str:
     'scratch'
     """
     while True:
+        move_names = list(monster['moves'].keys())
+        print(
+            f"1. {move_names[0].capitalize()} (Power: {monster['moves'][move_names[0]]['power']},"
+            f" Accuracy: {monster['moves'][move_names[0]]['accuracy']}%)")
+        print(
+            f"2. {move_names[1].capitalize()} (Power: {monster['moves'][move_names[1]]['power']},"
+            f" Accuracy: {monster['moves'][move_names[1]]['accuracy']}%)")
+        move_input = input("Choose a move (1 or 2): ")
+
         try:
-            move_names = list(monster['moves'].keys())
-            print(
-                f"1. {move_names[0].capitalize()} (Power: {monster['moves'][move_names[0]]['power']},"
-                f" Accuracy: {monster['moves'][move_names[0]]['accuracy']}%)")
-            print(
-                f"2. {move_names[1].capitalize()} (Power: {monster['moves'][move_names[1]]['power']},"
-                f" Accuracy: {monster['moves'][move_names[1]]['accuracy']}%)")
-            move_input = input("Choose a move (1 or 2): ")
-            if move_input in ["1", "2"]:
-                user_move = move_names[int(move_input) - 1]
-                return user_move
-            else:
-                print("Invalid choice! Please enter '1' or '2'.")
-        except IndexError:
-            raise IndexError("The 'moves' list does not have enough elements for this selection.")
+            choice = int(move_input) - 1
+            return move_names[choice]
+        except (ValueError, IndexError):
+            print("Invalid choice! Please enter '1' or '2'")
 
 
 def battle(monster: dict, enemy: dict) -> str:
