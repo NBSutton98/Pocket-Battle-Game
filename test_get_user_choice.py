@@ -17,6 +17,18 @@ class TestGetUserChoice(TestCase):
         expected = "s"
         self.assertEqual(expected, actual)
 
+    @patch('builtins.input', side_effect=['a'])
+    def test_get_user_choice_valid_a_input(self, _):
+        actual = game.get_user_choice()
+        expected = "a"
+        self.assertEqual(expected, actual)
+
+    @patch('builtins.input', side_effect=['d'])
+    def test_get_user_choice_valid_d_input(self, _):
+        actual = game.get_user_choice()
+        expected = "d"
+        self.assertEqual(expected, actual)
+
     @patch('builtins.input', side_effect=['2', 'w'])
     def test_get_user_choice_valid_wrong_input(self, _):
         actual = game.get_user_choice()
