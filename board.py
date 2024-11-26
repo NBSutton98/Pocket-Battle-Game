@@ -85,10 +85,10 @@ def display_map(board: dict, monster: dict, rows: int, columns: int):
     """
     Display a 2D map showing the monster's current location.
 
-    :param board: A dictionary representing the game board with coordinates as keys.
-    :param monster: A dictionary representing the monster, containing its current coordinates.
-    :param rows: An integer representing the number of rows in the board.
-    :param columns: An integer representing the number of columns in the board.
+    :param board: A dictionary
+    :param monster: A dictionary
+    :param rows: An integer
+    :param columns: An integer
     :precondition: board must be a valid dictionary with coordinates as keys.
     :precondition: monster must be a dictionary with "x-coordinate" and "y-coordinate".
     :precondition: rows and columns must be positive integers matching the board's dimensions.
