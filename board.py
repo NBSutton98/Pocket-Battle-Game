@@ -94,6 +94,20 @@ def display_map(board: dict, monster: dict, rows: int, columns: int):
     :precondition: rows and columns must be positive integers matching the board's dimensions.
     :postcondition: Prints a 2D map showing the monster location using X and -
     :return: 2D map
+
+    >>> display_map(board, monster, rows, columns) # doctest: +SKIP
+    X - - - -
+    - - - - -
+    - - - - -
+    - - - - -
+    - - - - -
+    >>> test_monster = {'x-coordinate': 1, 'y-coordinate': 2}
+    >>> display_map(board, test_monster, rows, columns) # doctest: +SKIP
+    - - - - -
+    - - - - -
+    - X - - -
+    - - - - -
+    - - - - -
     """
     monster_location = (monster["x-coordinate"], monster["y-coordinate"])
 
