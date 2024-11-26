@@ -106,5 +106,3 @@ def display_map(board: dict, monster: dict, rows: int, columns: int):
                 row_display.append("-")
         print(" ".join(row_display))
     print()
-
-
