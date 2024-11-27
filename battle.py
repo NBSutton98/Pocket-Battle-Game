@@ -158,7 +158,8 @@ def final_battle(monster: dict, final_boss: dict) -> bool:
     """
     make_final_boss()
     text_delay(
-        f"Congrats on making it this far, {monster['name']} has {monster['wins']} wins! Time for your final challenge\n")
+        f"Congrats on making it this far, {monster['name']} has {monster['wins']} wins! Time for your final "
+        f"challenge\n")
     result = battle(monster, final_boss)
     if result == f"{monster['name']} wins!\n":
         text_delay("Congratulations! Your monster has defeated the final boss and completed its journey!\n")
