@@ -1,4 +1,5 @@
 import random
+import time
 
 
 def get_user_choice():
@@ -120,8 +121,17 @@ def check_for_foes():
 
 
 def intro():
-    print("Thank you for trying my first game, this will be a battle simulation featuring your very own monster, "
-          "your objective is, explore, get a total of 6 battle wins and defeat the final challenge, good luck! ")
-    print("Well, it is finally time....Go set off on your adventure, but make sure to bring that crazy monster of "
-          "yours for protection, umm... what was its name again?")
+    text_delay("Thank you for trying my first game, this will be a battle simulation featuring your very own monster, "
+               "your objective is, explore,\n"
+               "get a total of 6 battle wins and defeat the final challenge, good luck! \n\n")
+
+    text_delay("Well, it is finally time....Go set off on your adventure,\n"
+               "but make sure to bring that crazy monster of "
+               "yours for protection, umm... what was its name again?\n")
     return
+
+
+def text_delay(text):
+    for letters in text:
+        print(letters, end='')
+        time.sleep(0.01)
