@@ -1,6 +1,8 @@
 from characters import make_monster
 import random
 
+from movement import text_delay
+
 
 def make_board(rows: int, columns: int) -> dict:
     """
@@ -76,8 +78,8 @@ def describe_current_location(board: dict, monster: dict):
     """
     monster_location = (monster["x-coordinate"], monster["y-coordinate"])
     room_description = board.get(monster_location)
-    print(f"You are currently at coordinates {monster_location}.")
-    print(f"Description: {room_description}")
+    text_delay(f"You are currently at coordinates {monster_location}.\n")
+    text_delay(f"Description: {room_description}\n")
     return room_description
 
 
@@ -109,7 +111,7 @@ def display_map(board: dict, monster: dict, rows: int, columns: int):
     - - - - -
     - - - - -
     """
-    monster_location = (monster["x-coordinate"], monster["y-coordinate"])
+    monster_location = (monster["y-coordinate"], monster["x-coordinate"])
 
     for row in range(rows):
         row_display = []

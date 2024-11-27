@@ -1,3 +1,5 @@
+from movement import text_delay
+
 def evolve(monster: dict, enemy: dict):
     """
     Evolve my monster and enemy
@@ -26,17 +28,17 @@ def evolve(monster: dict, enemy: dict):
     >>> evolve(test_monster, test_enemy)
     """
     if monster['wins'] >= 3:
-        print(
+        text_delay(
             f'Wow! That is {monster['wins']} wins for your monster! Your monster glows in a white light and begins '
-            f'to evolve')
+            f'to evolve\n')
         monster['max_hp'] += 10
         monster['hp'] = monster['max_hp']
         monster['moves']['flamethrower'] = monster['moves'].pop('ember')
         monster['moves']['flamethrower']['power'] *= 2
         monster['moves']['slash'] = monster['moves'].pop('scratch')
         monster['moves']['slash']['power'] *= 2
-        print(
-            f"{monster['name']} evolved! Stats and move power increased. They have learned "
+        text_delay(
+            f"{monster['name']} evolved! Stats and move power increased. They have learned /n"
             f"{list(monster['moves'].keys())}")
 
         enemy['max_hp'] += 8
@@ -68,7 +70,7 @@ def evolve_final(monster: dict):
     >>> evolve_final(test_monster)
     """
     if monster['wins'] >= 6:
-        print(
+        text_delay(
             f'Wow! That is {monster['wins']} wins for {monster['name']}! Your monster glows in a white light and '
             f'begins to'
             f' evolve')
@@ -80,4 +82,4 @@ def evolve_final(monster: dict):
         monster['moves']['crush']['power'] *= 2
         print(
             f"{monster['name']} has reached final evolution! Stats and move power have maxed out. They have learned"
-            f" {list(monster['moves'].keys())}")
+            f" {list(monster['moves'].keys())}\n\n")

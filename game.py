@@ -40,7 +40,7 @@ def main():
             final_battle_result = battle.final_battle(monster, final_boss)
 
             if final_battle_result:
-                print("You have completed your journey!")
+                print("You have completed your battle simulation test. Thank you for playing!")
                 break
             else:
                 print("Game over! Your monster has been defeated.")

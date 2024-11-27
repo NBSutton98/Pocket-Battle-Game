@@ -1,3 +1,6 @@
+from movement import text_delay
+
+
 def potion(monster: dict):
     """
     Heal your monster
@@ -18,9 +21,9 @@ def potion(monster: dict):
     if monster['potion_uses'] > 0:
         monster['hp'] = monster['max_hp']
         monster['potion_uses'] -= 1
-        print(f"Potion used! {monster['name']}s HP restored to max. Potions left: {monster['potion_uses']}")
+        text_delay(f"Potion used!\n {monster['name']}s HP restored to max. Potions left: {monster['potion_uses']}\n")
     else:
-        print("No potions left to use!")
+        text_delay("No potions left to use!\n")
 
 
 def use_potion(monster: dict) -> str:
@@ -40,13 +43,13 @@ def use_potion(monster: dict) -> str:
     {'hp': 10, 'max_hp': 10}
     """
     while True:
-        healing = input(f"Would you like to heal? Current HP:{monster['hp']} '1' yes, '2' no: ")
+        healing = input(f"Would you like to heal?\n Current HP:{monster['hp']}\n '1' yes, '2' no: ")
         if healing in ["1", "2"]:
             if healing == '1':
                 potion(monster)
                 return f"{monster['name']} wins!"
             elif healing == '2':
-                print("Continuing without healing.")
+                text_delay("Continuing without healing.\n")
                 return f"{monster['name']} wins!"
         else:
-            print("Invalid choice! Please enter '1' or '2'.")
+            text_delay("Invalid choice! Please enter '1' or '2'.")

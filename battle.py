@@ -2,6 +2,7 @@ import itertools
 from healing import *
 import random
 from characters import make_final_boss
+from movement import text_delay
 
 
 def move_choice(monster: dict) -> str:
@@ -26,19 +27,19 @@ def move_choice(monster: dict) -> str:
     """
     while True:
         move_names = list(monster['moves'].keys())
-        print(
+        text_delay(
             f"1. {move_names[0].capitalize()} (Power: {monster['moves'][move_names[0]]['power']},"
-            f" Accuracy: {monster['moves'][move_names[0]]['accuracy']}%)")
-        print(
+            f" Accuracy: {monster['moves'][move_names[0]]['accuracy']}%)\n")
+        text_delay(
             f"2. {move_names[1].capitalize()} (Power: {monster['moves'][move_names[1]]['power']},"
-            f" Accuracy: {monster['moves'][move_names[1]]['accuracy']}%)")
-        move_input = input("Choose a move (1 or 2): ")
+            f" Accuracy: {monster['moves'][move_names[1]]['accuracy']}%)\n")
+        move_input = input("Choose a move (1 or 2):\n")
 
         try:
             choice = int(move_input) - 1
             return move_names[choice]
         except (ValueError, IndexError):
-            print("Invalid choice! Please enter '1' or '2'")
+            text_delay("Invalid choice! \n Please enter '1' or '2'")
 
 
 def battle(monster: dict, enemy: dict) -> str:
@@ -64,25 +65,25 @@ def battle(monster: dict, enemy: dict) -> str:
     "Enemy wins!"
     """
     enemy_move_cycle = itertools.cycle(enemy['moves'])
-    print("The battle begins!")
+    text_delay("The battle begins!\n")
     while is_alive(monster):
-        print(f"{monster['name']} turn:")
+        text_delay(f"{monster['name']} turn:\n")
         move = move_choice(monster)
         use_move(monster, enemy, move)
         if enemy['hp'] <= 0:
-            print(f"{enemy['name']} defeated!")
+            text_delay(f"{enemy['name']} defeated!\n")
             monster['wins'] += 1
             enemy['hp'] = enemy['max_hp']
             use_potion(monster)
-            return f"{monster['name']} wins!"
-        print(f"{enemy['name']} turn:")
+            return f"{monster['name']} wins!\n"
+        text_delay(f"{enemy['name']} turn:\n")
         enemy_move = next(enemy_move_cycle)
         use_move(enemy, monster, enemy_move)
         if monster['hp'] <= 0:
-            print("Monster defeated! Sent back to start.")
+            text_delay("Monster defeated! Sent back to start.\n")
             return "Enemy wins!"
 
-    print("Battle over!")
+    text_delay("Battle over!")
 
 
 def use_move(monster: dict, enemy: dict, move_name: str):
@@ -113,10 +114,10 @@ def use_move(monster: dict, enemy: dict, move_name: str):
         damage = move['power']
         enemy['hp'] -= damage
         enemy['hp'] = max(0, enemy['hp'])
-        print(f"{move_name.capitalize()}!")
-        print(f"Damage dealt: {damage}. Remaining Target HP: {enemy['hp']}")
+        text_delay(f"{move_name.capitalize()}!\n")
+        text_delay(f"Damage dealt: {damage}. Remaining Target HP: {enemy['hp']}\n")
     else:
-        print(f"{move_name.capitalize()}, but it missed!")
+        text_delay(f"{move_name.capitalize()}, but it missed!\n")
 
 
 def is_alive(monster: dict) -> bool:
@@ -156,12 +157,12 @@ def final_battle(monster: dict, final_boss: dict) -> bool:
     "Monster has been defeated by the final boss. Better luck next time!"
     """
     make_final_boss()
-    print(
-        f"Congrats on making it this far, {monster['name']} has {monster['wins']} wins! Time for your final challenge")
+    text_delay(
+        f"Congrats on making it this far, {monster['name']} has {monster['wins']} wins! Time for your final challenge\n")
     result = battle(monster, final_boss)
-    if result == f"{monster['name']} wins!":
-        print("Congratulations! Your monster has defeated the final boss and completed its journey!")
+    if result == f"{monster['name']} wins!\n":
+        text_delay("Congratulations! Your monster has defeated the final boss and completed its journey!\n")
         return True
     else:
-        print(f"{monster['name']} has been defeated by the final boss. Better luck next time!")
+        text_delay(f"{monster['name']} has been defeated by the final boss. Better luck next time!")
         return False
