@@ -132,6 +132,21 @@ def intro():
 
 
 def text_delay(text):
+    """
+    Delay text in print statements
+
+    :param text: a string
+    :precondition: text must be a string
+    :postcondition: print out text with a delay of 0.01
+    :return: slowed down print statement
+
+    >>> test_string = 'hello'
+    >>> text_delay(test_string)
+    hello
+    >>> test_string = 'goodbye'
+    >>> text_delay(test_string)
+    goodbye
+    """
     for letters in text:
         print(letters, end='')
         time.sleep(0.01)
