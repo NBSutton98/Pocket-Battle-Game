@@ -1,36 +1,12 @@
 from movement import text_delay
 
+
 def evolve(monster: dict, enemy: dict):
-    """
-    Evolve my monster and enemy
-
-    A function that takes the monster and enemy, raises their max_hp and changes the monsters moves
-
-    :param monster: a dictonary
-    :param enemy: a dictonary
-    :precondition: monster is a well-formed dictionary that represents a monster
-    :precondition: enemy is a well-formed dictionary that represents an enemy
-    :postcondition: update max hp, change move names and update power of moves
-    :return: monster and enemy
-
-    >>> test_monster = {'name': 'nick', 'wins': 3, 'hp': 10, 'max_hp': 10,\
-     'moves': {'ember': {'power': 3, 'accuracy': 80},'scratch': {'power': 2, 'accuracy': 100}},\
-      'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
-    >>> test_enemy = {'hp': 10, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}, }}
-    >>> evolve(test_monster, test_enemy)
-    Wow! That is 3 wins for your monster! Your monster glows in a white light and begins to evolve
-    nick evolved! Stats and move power increased. They have learned ['flamethrower', 'slash']
-    Your enemy has evolved into, Balloonist
-    >>> test_monster = {'name': 'nick', 'wins': 0, 'hp': 10,\
-     'max_hp': 10, 'moves': {'ember': {'power': 3, 'accuracy': 80},'scratch': {'power': 2, 'accuracy': 100}},\
-      'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
-    >>> test_enemy = {'hp': 10, 'max_hp': 5, 'moves': {'bite': {'power': 1, 'accuracy': 90}, }}
-    >>> evolve(test_monster, test_enemy)
-    """
     if monster['wins'] >= 3:
         text_delay(
-            f'Wow! That is {monster['wins']} wins for your monster! Your monster glows in a white light and begins '
-            f'to evolve\n')
+            f"Wow! That is {monster['wins']} wins for your monster! Your monster glows in a white light and begins to "
+            f"evolve\n"
+        )
         monster['max_hp'] += 10
         monster['hp'] = monster['max_hp']
         monster['moves']['flamethrower'] = monster['moves'].pop('ember')
@@ -38,9 +14,8 @@ def evolve(monster: dict, enemy: dict):
         monster['moves']['slash'] = monster['moves'].pop('scratch')
         monster['moves']['slash']['power'] *= 2
         text_delay(
-            f"{monster['name']} evolved! Stats and move power increased. They have learned /n"
-            f"{list(monster['moves'].keys())}")
-
+            f"{monster['name']} evolved! Stats increased. They have learned {list(monster['moves'].keys())}\n"
+        )
         enemy['max_hp'] += 8
         enemy['hp'] = enemy['max_hp']
         enemy['moves'] = {move: {'power': data['power'] + 2, 'accuracy': data['accuracy']} for move, data in

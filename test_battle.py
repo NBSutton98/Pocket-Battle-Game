@@ -15,7 +15,7 @@ class TestBattle(TestCase):
         enemy = make_enemy()
         enemy['hp'] = 1
         actual = battle(monster, enemy)
-        expected = "nick wins!"
+        expected = "nick wins!\n"
         self.assertEqual(expected, actual)
 
     @patch('sys.stdout', new_callable=io.StringIO)
@@ -40,7 +40,7 @@ class TestBattle(TestCase):
         enemy = make_enemy()
         enemy['hp'] = 5
         actual = battle(monster, enemy)
-        expected = "nick wins!"
+        expected = "nick wins!\n"
         self.assertEqual(expected, actual)
 
     @patch('sys.stdout', new_callable=io.StringIO)

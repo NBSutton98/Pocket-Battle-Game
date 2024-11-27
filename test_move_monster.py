@@ -4,7 +4,6 @@ from characters import make_monster
 from movement import get_user_choice, move_monster
 
 
-
 class Test(TestCase):
 
     @patch('builtins.input', side_effect=['s'])

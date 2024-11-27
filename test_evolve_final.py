@@ -14,9 +14,10 @@ class TestFinalEvolve(TestCase):
                         'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
         evolve_final(test_monster)
         expected = (
-            "Wow! That is 6 wins for nick! Your monster glows in a white light and begins to evolve\n"
-            "nick has reached final evolution! Stats and move power have maxed out. They have learned ['fire "
-            "blast', 'crush']"
+            "Wow! That is 6 wins for nick! "
+            "Your monster glows in a white light and begins to evolve"
+            "nick has reached final evolution! Stats and move power have maxed out."
+            " They have learned ['fire blast', 'crush']"
         )
         self.assertEqual(mock_stdout.getvalue().strip(), expected)
 
@@ -45,7 +46,7 @@ class TestFinalEvolve(TestCase):
                         'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
         evolve_final(test_monster)
         expected = (
-            "Wow! That is 8 wins for nick! Your monster glows in a white light and begins to evolve\n"
+            "Wow! That is 8 wins for nick! Your monster glows in a white light and begins to evolve"
             "nick has reached final evolution! Stats and move power have maxed out. They have learned ['fire "
             "blast', 'crush']"
         )

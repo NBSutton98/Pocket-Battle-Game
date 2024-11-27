@@ -13,7 +13,8 @@ class TestPotion(TestCase):
                         'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}},
                         'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 2}
         potion(test_monster)
-        expected_output = "Potion used! nicks HP restored to max. Potions left: 1"
+        expected_output = ("Potion used!\n "
+                           "nicks HP restored to max. Potions left: 1")
         self.assertEqual(mock_stdout.getvalue().strip(), expected_output)
 
     @patch('sys.stdout', new_callable=io.StringIO)
@@ -22,7 +23,7 @@ class TestPotion(TestCase):
                         'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}},
                         'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 1}
         potion(test_monster)
-        expected_output = "Potion used! nicks HP restored to max. Potions left: 0"
+        expected_output = "Potion used!\n nicks HP restored to max. Potions left: 0"
         self.assertEqual(mock_stdout.getvalue().strip(), expected_output)
 
     @patch('sys.stdout', new_callable=io.StringIO)

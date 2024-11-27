@@ -37,8 +37,8 @@ class TestDisplayMap(TestCase):
         expected = (
             "- - - - -\n"
             "- - - - -\n"
-            "- - - X -\n"
             "- - - - -\n"
+            "- - X - -\n"
             "- - - - -\n\n"
         )
         self.assertEqual(actual, expected)

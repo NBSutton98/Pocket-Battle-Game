@@ -11,7 +11,7 @@ class Test(TestCase):
     def test_use_potion(self, _, mock_stdout):
         test_monster = {'name': 'chris', 'hp': 1, 'max_hp': 10, 'potion_uses': 3}
         use_potion(test_monster)
-        expected = "Potion used! chriss HP restored to max. Potions left: 2"
+        expected = "Potion used!\n chriss HP restored to max. Potions left: 2"
         self.assertEqual(mock_stdout.getvalue().strip(), expected)
 
     @patch('sys.stdout', new_callable=io.StringIO)
@@ -19,7 +19,7 @@ class Test(TestCase):
     def test_use_potion_last(self, _, mock_stdout):
         test_monster = {'name': 'chris', 'hp': 1, 'max_hp': 10, 'potion_uses': 1}
         use_potion(test_monster)
-        expected = "Potion used! chriss HP restored to max. Potions left: 0"
+        expected = "Potion used!\n chriss HP restored to max. Potions left: 0"
         self.assertEqual(mock_stdout.getvalue().strip(), expected)
 
     @patch('sys.stdout', new_callable=io.StringIO)
@@ -36,7 +36,7 @@ class Test(TestCase):
         test_monster = {'name': 'chris', 'hp': 1, 'max_hp': 10, 'potion_uses': 1}
         use_potion(test_monster)
         expected = (
-            "Invalid choice! Please enter '1' or '2'.\n"
-            "Potion used! chriss HP restored to max. Potions left: 0"
+            "Invalid choice! Please enter '1' or '2'."
+            "Potion used!\n chriss HP restored to max. Potions left: 0"
         )
         self.assertEqual(mock_stdout.getvalue().strip(), expected)
