@@ -41,3 +41,21 @@ class Test(TestCase):
         expected = True
         actual = move_monster(character, direction)
         self.assertEqual(expected, actual)
+
+    @patch('builtins.input', side_effect=['e', "W"])
+    def test_move_character_invalid_letter(self, _):
+        name = 'nick'
+        character = make_monster(name)
+        direction = get_user_choice()
+        expected = True
+        actual = move_monster(character, direction)
+        self.assertEqual(expected, actual)
+
+    @patch('builtins.input', side_effect=['3', 'W'])
+    def test_move_character_invalid_number(self, _):
+        name = 'nick'
+        character = make_monster(name)
+        direction = get_user_choice()
+        expected = True
+        actual = move_monster(character, direction)
+        self.assertEqual(expected, actual)

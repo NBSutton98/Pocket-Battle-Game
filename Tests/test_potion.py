@@ -19,7 +19,7 @@ class TestPotion(TestCase):
 
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_potion_with_1_use_left(self, mock_stdout):
-        test_monster = {'name': 'nick','wins': 0, 'hp': 2, 'max_hp': 10,
+        test_monster = {'name': 'nick', 'wins': 0, 'hp': 2, 'max_hp': 10,
                         'moves': {'ember': {'power': 5, 'accuracy': 80}, 'scratch': {'power': 3, 'accuracy': 100}},
                         'x-coordinate': 0, 'y-coordinate': 0, 'potion_uses': 1}
         potion(test_monster)
