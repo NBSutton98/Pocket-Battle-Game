@@ -21,7 +21,7 @@ def potion(monster: dict):
     if monster['potion_uses'] > 0:
         monster['hp'] = monster['max_hp']
         monster['potion_uses'] -= 1
-        text_delay(f"Potion used!\n {monster['name']}s HP restored to max. Potions left: {monster['potion_uses']}\n")
+        text_delay(f"Potion used!\n {monster['name']}'s HP restored to max. Potions left: {monster['potion_uses']}\n")
     else:
         text_delay("No potions left to use!\n")
 
