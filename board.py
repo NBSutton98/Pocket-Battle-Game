@@ -1,6 +1,6 @@
-from characters import make_monster
 import random
 
+from characters import make_monster
 from movement import text_delay
 
 
