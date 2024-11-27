@@ -7,7 +7,7 @@ def evolve(monster: dict, enemy: dict):
             f"Wow! That is {monster['wins']} wins for your monster! Your monster glows in a white light and begins to "
             f"evolve\n"
         )
-        monster['max_hp'] += 10
+        monster['max_hp'] += 20
         monster['hp'] = monster['max_hp']
         monster['moves']['flamethrower'] = monster['moves'].pop('ember')
         monster['moves']['flamethrower']['power'] *= 2
