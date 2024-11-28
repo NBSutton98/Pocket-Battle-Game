@@ -65,7 +65,6 @@ def battle(monster: dict, enemy: dict) -> str:
     "Enemy wins!"
     """
     enemy_move_cycle = itertools.cycle(enemy['moves'])
-    text_delay("The battle begins!\n")
     while is_alive(monster):
         text_delay(f"{monster['name']} turn:\n")
         move = move_choice(monster)
@@ -80,10 +79,7 @@ def battle(monster: dict, enemy: dict) -> str:
         enemy_move = next(enemy_move_cycle)
         use_move(enemy, monster, enemy_move)
         if monster['hp'] <= 0:
-            text_delay("Monster defeated! Sent back to start.\n")
             return "Enemy wins!"
-
-    text_delay("Battle over!")
 
 
 def use_move(monster: dict, enemy: dict, move_name: str):
