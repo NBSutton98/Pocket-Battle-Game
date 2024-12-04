@@ -5,7 +5,6 @@ from movement import get_user_choice, validate_move
 
 
 class Test(TestCase):
-
     @patch('builtins.input', side_effect=['s'])
     def test_validate_move_up(self, _):
         name = 'nick'

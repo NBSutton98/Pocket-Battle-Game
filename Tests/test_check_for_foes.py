@@ -4,7 +4,6 @@ import movement
 
 
 class Test(TestCase):
-
     @patch('random.randint', return_value=1)
     def test_check_for_foes_foe_found(self, _):
         actual = movement.check_for_foes()

@@ -1,12 +1,10 @@
 import io
 from unittest import TestCase
 from unittest.mock import patch
-
 from healing import potion
 
 
 class TestPotion(TestCase):
-
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_potion_with_uses_left(self, mock_stdout):
         test_monster = {'name': 'nick', 'wins': 0, 'hp': 1, 'max_hp': 10,

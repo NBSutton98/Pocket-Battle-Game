@@ -6,7 +6,6 @@ from characters import make_monster, make_enemy
 
 
 class TestBattle(TestCase):
-
     @patch('sys.stdout', new_callable=io.StringIO)
     @patch('builtins.input', side_effect=['1', '1'])
     @patch('random.randint', return_value=50)

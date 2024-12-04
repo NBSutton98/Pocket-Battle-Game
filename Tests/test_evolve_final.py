@@ -1,12 +1,10 @@
 from unittest import TestCase
-
 from evolve import evolve_final
 import io
 from unittest.mock import patch
 
 
 class TestFinalEvolve(TestCase):
-
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_final_evolve(self, mock_stdout):
         test_monster = {'name': 'nick', 'wins': 6, 'hp': 5, 'max_hp': 10,

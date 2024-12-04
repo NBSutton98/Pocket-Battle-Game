@@ -1,5 +1,4 @@
 from unittest import TestCase
-
 from battle import is_alive
 from characters import make_monster
 

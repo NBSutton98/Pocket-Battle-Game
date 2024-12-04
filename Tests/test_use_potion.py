@@ -5,7 +5,6 @@ from unittest.mock import patch
 
 
 class Test(TestCase):
-
     @patch('sys.stdout', new_callable=io.StringIO)
     @patch('builtins.input', side_effect=['1'])
     def test_use_potion_success(self, _, mock_stdout):

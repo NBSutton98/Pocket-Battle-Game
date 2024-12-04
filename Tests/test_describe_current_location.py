@@ -4,7 +4,6 @@ import board
 
 
 class Test(TestCase):
-
     @patch('random.choice', side_effect=["A cozy studio with a warm fireplace and vintage decor."])
     def test_describe_current_location_start(self, _):
         test_board = board.make_board(1, 1)

@@ -4,7 +4,6 @@ import movement
 
 
 class TestGetUserChoice(TestCase):
-
     @patch('builtins.input', side_effect=['w'])
     def test_get_user_choice_valid_input_valid(self, _):
         actual = movement.get_user_choice()

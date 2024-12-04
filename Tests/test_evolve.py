@@ -7,7 +7,6 @@ from evolve import evolve
 
 
 class Test(TestCase):
-
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_evolve(self, mock_stdout):
         test_monster = {'name': 'nick', 'wins': 3, 'hp': 5, 'max_hp': 10,

@@ -18,5 +18,3 @@ class TestIntro(TestCase):
         intro()
         actual = mock_stdout.getvalue()
         self.assertEqual(actual, expected)
-
-

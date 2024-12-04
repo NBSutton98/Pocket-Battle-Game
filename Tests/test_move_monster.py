@@ -5,7 +5,6 @@ from movement import get_user_choice, move_monster
 
 
 class Test(TestCase):
-
     @patch('builtins.input', side_effect=['s'])
     def test_move_character_up(self, _):
         name = 'nick'

@@ -4,7 +4,6 @@ import board
 
 
 class Test(TestCase):
-
     @patch('random.choice', side_effect=["A cozy studio with a warm fireplace and vintage decor."])
     def test_make_board_smallest(self, _):
         actual = board.make_board(1, 1)

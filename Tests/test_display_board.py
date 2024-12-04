@@ -6,7 +6,6 @@ import io
 
 
 class TestDisplayMap(TestCase):
-
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_display_map_start(self, mock_stdout):
         board = {(row, col): f"Room at ({row}, {col})" for row in range(5) for col in range(5)}
