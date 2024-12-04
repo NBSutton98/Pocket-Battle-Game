@@ -6,6 +6,7 @@ import movement
 
 
 def main():
+    """Drive the program"""
     movement.intro()
     my_board = board.make_board(5, 5)
     name = input("What is your monster's name?: ")
