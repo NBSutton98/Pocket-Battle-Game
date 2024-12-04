@@ -26,7 +26,7 @@ def make_final_boss() -> dict:
     {'hp': 50, 'max_hp': 50, 'name': 'Skibidi', 'moves': {'big punch': {'power': 10, 'accuracy': 90},
     'hyper beam': {'power': 15, 'accuracy': 100}}}
     """
-    final_boss = {'hp': 30, 'max_hp': 30, 'name': 'Skibidi',
+    final_boss = {'hp': 30, 'max_hp': 26, 'name': 'Skibidi',
                   'moves': {'big punch': {'power': 10, 'accuracy': 90}, 'hyper beam': {'power': 15, 'accuracy': 100}}}
     return final_boss
 
